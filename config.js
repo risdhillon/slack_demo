@@ -1,6 +1,6 @@
 module.exports = {
   // your community or team name to display on join page.
-  community: process.env.COMMUNITY_NAME || 'PSCS Test',
+  community: process.env.COMMUNITY_NAME || 'PSCS Test 2',
   // your slack team url (ex: socketio.slack.com)
   slackUrl: process.env.SLACK_URL || 'pscstest.slack.com',
   // access token of slack
