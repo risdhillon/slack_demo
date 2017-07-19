@@ -1,6 +1,6 @@
 module.exports = {
   // your community or team name to display on join page.
-  community: process.env.COMMUNITY_NAME || 'PowerShell User Slack Form',
+  community: process.env.COMMUNITY_NAME || 'YOUR TEAM NAME HERE',
   // your slack team url (ex: socketio.slack.com)
   slackUrl: process.env.SLACK_URL || 'pscstest.slack.com',
   // access token of slack
