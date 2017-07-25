@@ -1,16 +1,32 @@
-﻿$gitrepo="https://github.com/risdhillon/slack_demo.git"
-$gittoken="dd5d5a8009913e31af40dbfb680a55f83ccc5ff6"
-$webappname="demositerd"
-$location="West Europe"
+﻿$gitrepo           = 'https://github.com/risdhillon/slack_demo.git'
+$gittoken          = 'dd5d5a8009913e31af40dbfb680a55f83ccc5ff6'
+$webappname        = 'demositerd'
+$location          = 'West Europe'
+$resourcegroupName = 'demositerd'
 
 # Create a resource group.
-New-AzureRmResourceGroup -Name demositerd -Location $location
+if(-not (Get-AzureRmResourceGroup -Name demositerd -Location $location)){
+    New-AzureRmResourceGroup -Name demositerd -Location $location
+}
+else{
+    Write-Verbose -Message 'Resource group "demositerd" already present' -Verbose
+}
 
 # Create an App Service plan in Free tier.
-New-AzureRmAppServicePlan -Name $webappname -Location $location -ResourceGroupName demositerd -Tier Free
+if(-not (Get-AzureRmAppServicePlan -Name $webappname -ResourceGroupName $resourcegroupName)){
+    New-AzureRmAppServicePlan -Name $webappname -Location $location -ResourceGroupName $resourcegroupName -Tier Free
+}
+else{
+    Write-Verbose -Message "App Service plan for $webappname already present" -Verbose
+}
 
 # Create a web app.
-New-AzureRmWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName demositerd
+if(-not (Get-AzureRmWebApp -Name $webappname -ResourceGroupName $resourcegroupName)){
+    New-AzureRmWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName demositerd
+}
+else{
+    Write-Verbose -Message "Webapp $webappname already deployed" -Verbose
+}
 
 # SET GitHub
 $PropertiesObject = @{token = $token;}
