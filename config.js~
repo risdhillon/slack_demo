@@ -13,7 +13,7 @@ module.exports = {
   //   --data 'email=EMAIL&token=TOKEN&set_active=true' \
   //   --compressed
  
-    slacktoken: process.env.SLACK_TOKEN || 'xoxp-205317946199-204410186291-217629907107-ec5ab7c921e5aebbdf5adb97b94ca075',
+    slacktoken: process.env.SLACK_TOKEN || 'EXPIRED##xoxp##EXPIRED-205317946199-204410186291-217629907107-ec5ab7c921e5aebbdf5adb97b94ca075',
   // an optional security measure - if it is set, then that token will be required to get invited.
   inviteToken: process.env.INVITE_TOKEN || null,
 
